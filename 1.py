@@ -28,7 +28,26 @@ schoolTripPrice = float(input('The cost in dollars of the school trip (Between 5
 proportions = input('Input four number separated with whitespace and indicating the proportion of the students are in first, second, third and fourth year.')
 studentsCount = int(input('How many students are the members of the school trip?'))
 proportionsList = []
+proportionsResult = []
+costsPerYear = [12, 10, 7, 5]
+everyonesCosts = []
 
 for i in proportions.split():
     proportionsList.append(float(i))
+if sum(proportionsList) != 1:
+    print('The sum of every number should be equal to 1 (100%).')
+else:
+    pass
 print(proportionsList)
+for i in proportionsList:
+    proportionsResult.append(int(studentsCount * i))
+print(proportionsResult)
+for i in range(4):
+    everyonesCosts.append(costsPerYear[i] * proportionsResult[i])
+print(everyonesCosts)
+if sum(everyonesCosts) < schoolTripPrice:
+    print(sum(everyonesCosts))
+    print('YES')
+else:
+    print(sum(everyonesCosts))
+    print('NO')
