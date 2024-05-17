@@ -24,30 +24,89 @@ the brunch. n is between 4 and 2,000.
 Output
 For each test case: if the students need to raise more money for the school
 trip, output YES; otherwise, output NO.'''
-schoolTripPrice = float(input('The cost in dollars of the school trip (Between 50$ - 50000$)'))
-proportions = input('Input four number separated with whitespace and indicating the proportion of the students are in first, second, third and fourth year.')
-studentsCount = int(input('How many students are the members of the school trip?'))
-proportionsList = []
-proportionsResult = []
-costsPerYear = [12, 10, 7, 5]
-everyonesCosts = []
+# schoolTripPrice = float(input('The cost in dollars of the school trip (Between 50$ - 50000$)'))
+# proportions = input('Input four number separated with whitespace and indicating the proportion of the students are in first, second, third and fourth year.')
+# studentsCount = int(input('How many students are the members of the school trip?'))
+# proportionsList = []
+# proportionsResult = []
+# costsPerYear = [12, 10, 7, 5]
+# everyonesCosts = []
+#
+# for i in proportions.split():
+#     proportionsList.append(float(i))
+# if sum(proportionsList) != 1:
+#     print('The sum of every number should be equal to 1 (100%).')
+# else:
+#     pass
+# print(proportionsList)
+# for i in proportionsList:
+#     proportionsResult.append(int(studentsCount * i))
+# print(proportionsResult)
+# for i in range(4):
+#     everyonesCosts.append(costsPerYear[i] * proportionsResult[i])
+# print(everyonesCosts)
+# if sum(everyonesCosts) < schoolTripPrice:
+#     print(sum(everyonesCosts))
+#     print('YES')
+# else:
+#     print(sum(everyonesCosts))
+#     print('NO')
+'''Two players, A and B, are playing a card game. (You don’t need to know
+about playing cards or card games to understand this problem.)
+The game starts with a deck of 52 cards. Player A takes a card from the
+deck, then player B takes a card from the deck, then player A, then player B,
+until there are no cards left in the deck.
+There are 13 types of cards in the deck. These types are as follows: two,
+three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace.
+There are four cards of each of these types in the deck. For example, there are four
+twos, four threes, and so on, all the way up to four aces. (That’s why there
+are 52 cards in the deck: 13 types times 4 cards per type.)
+A high card is a card that is a jack, queen, king, or ace.
+When a player takes a high card, they may score some points. Here are
+the rules by which points are scored:
+• If a player takes a jack, after which there is at least one card remaining
+in the deck, and the next card in the deck is not a high card,
+then the player scores 1 point.
+• If a player takes a queen, after which there are at least two cards remaining
+in the deck, and neither of the next two cards in the deck is
+a high card, then the player scores 2 points.
+• If a player takes a king, after which there are at least three cards remaining
+in the deck, and none of the next three cards in the deck is
+a high card, then the player scores 3 points.
+• If a player takes an ace, after which there are at least four cards remaining
+in the deck, and none of the next four cards in the deck is a
+high card, then the player scores 4 points.
+We’re asked to output information each time a player scores, as well as
+the total score for each player at the end of the game.
+Input
+The input consists of 52 lines. Each line contains the type of a card in the
+deck. The lines are in the order that cards will be taken from the deck; that
+is, the first line is the first card taken from the deck, the second line is the
+second card taken, and so on.
+Output
+Whenever a player scores, output the following line:
+Player p scores q point(s).
 
-for i in proportions.split():
-    proportionsList.append(float(i))
-if sum(proportionsList) != 1:
-    print('The sum of every number should be equal to 1 (100%).')
-else:
-    pass
-print(proportionsList)
-for i in proportionsList:
-    proportionsResult.append(int(studentsCount * i))
-print(proportionsResult)
-for i in range(4):
-    everyonesCosts.append(costsPerYear[i] * proportionsResult[i])
-print(everyonesCosts)
-if sum(everyonesCosts) < schoolTripPrice:
-    print(sum(everyonesCosts))
-    print('YES')
-else:
-    print(sum(everyonesCosts))
-    print('NO')
+We’ll be here all year if we go through a 52-card example, so let’s use
+a smaller one with just 10 cards. This isn’t a complete test case, so the program
+we write won’t work on it, but it’s enough for us to understand the mechanics
+of the game and what our solution will have to do. Here’s the test
+case:
+queen
+three
+seven
+king
+nine
+jack
+eight
+king
+jack
+four'''
+PlrA = []
+PlrB = []
+deck = [
+    ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace'],
+    ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace'],
+    ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace'],
+    ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace']
+        ]
