@@ -101,7 +101,34 @@ jack
 eight
 king
 jack
-four'''
+four
+Player A takes the first card, which is a queen. A queen is a high card,
+and player A might score 2 points here. First, we confirm that there are
+at least two cards remaining in the deck after this queen. Next, we have to
+check these next two cards, hoping there is no high card among them. The
+next two cards are not high cards—they are a three and a seven—so player A
+gets 2 points.
+Player B now takes the second card, which is a three. Three isn’t a high
+card, so no points for player B.
+Player A now takes the seven. No points.
+Player B now takes the king, so there’s a chance for 3 points for player B.
+There are at least three cards remaining in the deck after this king. We have
+to check these next three cards, hoping there is no high card among them.
+Sadly, there is a high card, a jack, among those three. No points for player B.
+Player A now takes the nine. No points.
+Player B now takes the first jack. There is at least one card remaining
+in the deck after this jack. We have to check this next card, hoping it isn’t a
+high card. Good news: it’s not a high card—it’s an eight—so player B gets 1
+point.
+There’s only one more point scored, and it’s by player A when they take
+the second-last card (the jack) from the deck.
+Therefore, this is the output for this test case:
+Player A scores 2 point(s).
+Player B scores 1 point(s).
+Player A scores 1 point(s).
+Player A: 3 point(s).
+Player B: 1 point(s).
+'''
 PlrA = []
 PlrB = []
 deck = [
