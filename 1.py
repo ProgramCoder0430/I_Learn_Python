@@ -217,10 +217,27 @@ If Lena can organize the boxes, output YES; otherwise, output NO.'''
 #     print(a + b)
 #     # return a + b
 # denis(input(), input())
-def denis(a, b):
-    print(a - b)
-
-denis(int(input('How many sealed boxes of action figures does Lena has? (1-100)')), int(input()))
+# def denis(a, b):
+#     print(a - b)
+#
+# denis(int(input('How many sealed boxes of action figures does Lena has? (1-100)')), int(input()))
+a = [[6, 7, 8], [1, 2], [10, 12]]
+tmp = []
+if a[0][0] < a[1][0]:
+    tmp.append(a[0])
+else:
+    pass
+if a[1][0] < a[2][0]:
+    tmp.append(a[1])
+else:
+    pass
+if a[0][0] < a[2][0]:
+    tmp.append(a[0])
+    tmp.append(a[2])
+else:
+    tmp.append(a[2])
+    tmp.append(a[0])
+print(tmp)
 
 
 
