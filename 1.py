@@ -214,6 +214,12 @@ If Lena can organize the boxes, output YES; otherwise, output NO.'''
     :param b: 
     :return: 
     '''
+# TODO: Read input
+# TODO: Check whether all boxes are OK
+# TODO: Obtain a new list of boxes with only left and right heights
+# TODO: Sort boxes
+# TODO: Determine whether boxes are organized
+
 #     print(a + b)
 #     # return a + b
 # denis(input(), input())
@@ -221,29 +227,47 @@ If Lena can organize the boxes, output YES; otherwise, output NO.'''
 #     print(a - b)
 #
 # denis(int(input('How many sealed boxes of action figures does Lena has? (1-100)')), int(input()))
-a = [[6, 7, 8], [1, 2], [10, 12]]
+# a = [2, 5]
 tmp = []
-if a[0][0] < a[1][0]:
-    tmp.append(a[0])
-else:
-    pass
-if a[1][0] < a[2][0]:
-    tmp.append(a[1])
-else:
-    pass
-if a[0][0] < a[2][0]:
-    tmp.append(a[0])
-    tmp.append(a[2])
-else:
-    tmp.append(a[2])
-    tmp.append(a[0])
-print(tmp)
+# if a > b:
+#     print('Hello')
+# else:
+#     print('Bye')
+# if a[0][0] < a[1][0]:
+#     tmp.append(a[0])
+# else:
+#     pass
+# if a[1][0] < a[2][0]:
+#     tmp.append(a[1])
+# else:
+#     pass
+# if a[0][0] < a[2][0]:
+#     tmp.append(a[0])
+#     tmp.append(a[2])
+# else:
+#     tmp.append(a[2])
+#     tmp.append(a[0])
+# for l in range(len(a)-1):
+#     for i in a:
+#         if i[0] < a[l][0]:
+#             tmp.append(i)
+#
+# print(tmp)
+
+# a, b = [1,2,3],[3,2,1]
+# print('a>b') if a>b else print('foo')
+
+# while True:
+#     a = input('Какая высота у каждой фигуры?')
+#     a = a.split()
+#     for i in a:
+#         if a[0] > i:
+#             a[0] = i
+#             tmp.append(a[0])
+#
+#     print(tmp)
 
 
-
-
-
-
-
-
-
+numbers = [1, 2, 3, 4, 5]
+squares = [x**2 for x in numbers]
+print(squares)
