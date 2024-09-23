@@ -228,7 +228,6 @@ If Lena can organize the boxes, output YES; otherwise, output NO.'''
 #
 # denis(int(input('How many sealed boxes of action figures does Lena has? (1-100)')), int(input()))
 # a = [2, 5]
-tmp = []
 # if a > b:
 #     print('Hello')
 # else:
@@ -257,17 +256,19 @@ tmp = []
 # a, b = [1,2,3],[3,2,1]
 # print('a>b') if a>b else print('foo')
 
-# while True:
-#     a = input('Какая высота у каждой фигуры?')
-#     a = a.split()
-#     for i in a:
-#         if a[0] > i:
-#             a[0] = i
-#             tmp.append(a[0])
-#
-#     print(tmp)
+_sorted = []
+b = int(input('Сколько коробок с фигирами в большой коробке?'))
+for i in range(b):
+    a = input('Какая высота у каждой фигуры?')
+    a = a.split()
+    a = [int(i) for i in a]
+    a = sorted(a)
+    _sorted.append(a)
+    if _sorted[0] > _sorted[i]:
+        _sorted.insert(0, i)
+print(_sorted)
 
 
-numbers = [1, 2, 3, 4, 5]
-squares = [x**2 for x in numbers]
-print(squares)
+# numbers = [1, 2, 3, 4, 5]
+# squares = [x**2 for x in numbers]
+# print(squares)
