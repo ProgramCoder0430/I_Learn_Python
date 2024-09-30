@@ -265,7 +265,7 @@ for i in range(b):
     a = sorted(a)
     _sorted.append(a)
     if _sorted[0] > _sorted[i]:
-        _sorted.insert(0, i)
+        _sorted.insert(i, 0)
 print(_sorted)
 
 
