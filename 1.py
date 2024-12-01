@@ -200,7 +200,15 @@ between 1 and 10,000.
 There is a space between each pair of integers on the line.
 Output
 If Lena can organize the boxes, output YES; otherwise, output NO.'''
-# ================================================================== functions ==================================================================
+
+'''Does each box, on its own, have the action figures going from shortest to
+tallest? Good question, and not one we know how to answer in just a line
+or two of code. Let’s rely on a new function, all_boxes_ok, to tell us. If that
+function returns False, then at least one box has its heights messed up, so
+we won’t be able to organize the boxes. In that case, we should output NO. If
+all_boxes_ok returns True, then we should carry out our remaining tasks to
+determine whether the boxes can be organized'''
+# =============================================================================================================================================
 # def denis():
 #     y = 3 + 2
 #     return 2 + 2
@@ -214,11 +222,7 @@ If Lena can organize the boxes, output YES; otherwise, output NO.'''
     :param b: 
     :return: 
     '''
-# TODO: Read input
-# TODO: Check whether all boxes are OK
-# TODO: Obtain a new list of boxes with only left and right heights
-# TODO: Sort boxes
-# TODO: Determine whether boxes are organized
+
 
 #     print(a + b)
 #     # return a + b
@@ -255,20 +259,117 @@ If Lena can organize the boxes, output YES; otherwise, output NO.'''
 
 # a, b = [1,2,3],[3,2,1]
 # print('a>b') if a>b else print('foo')
+# TODO: Check whether all boxes are OK
+# TODO: Obtain a new list of boxes with only left and right heights
+# TODO: Sort boxes
+# TODO: Determine whether boxes are organized
 
-_sorted = []
-b = int(input('Сколько коробок с фигирами в большой коробке?'))
-for i in range(b):
-    a = input('Какая высота у каждой фигуры?')
-    a = a.split()
-    a = [int(i) for i in a]
-    a = sorted(a)
-    _sorted.append(a)
-    if _sorted[0] > _sorted[i]:
-        _sorted.insert(i, 0)
-print(_sorted)
+# bigBox = []
+# boxes = int(input('Сколько коробок с фигурами в большой коробке?'))
+# for i in range(boxes):
+#     figures = input('Какая высота у каждой фигуры?')
+#     figures = figures.split()
+#     figures = [int(i) for i in figures]
+#     bigBox.append(figures)
+# print(bigBox)
+# for boxes in bigBox:
+#     for i in range(len(boxes)-1):
+#         if boxes[i] == boxes[i+1]:
+#             print('No')
+#         elif boxes[i] < boxes[i+1]:
+#             pass
+#         else:
+#             print('No')
+# for i in range(len(bigBox)-1):
+#     if bigBox[i][-1] > bigBox[i+1][0]:
+#         print('No')
 
 
-# numbers = [1, 2, 3, 4, 5]
-# squares = [x**2 for x in numbers]
-# print(squares)
+def read_boxes(n):
+    '''n is the number of boxes to read.
+    Read the boxes from the input and return them as a list of boxes;
+    each boxes is the list of action figure height.'''
+    boxes = []
+    for i in range(n):  # Change the n number
+        box = input("What's the height of each figure? (Divide with space)").split()
+        box.pop(0)
+    for i in range(len(box)):
+        box[i] = int(box[i])
+        boxes.append(box)
+    return boxes
+
+
+def box_ok(box):
+    '''
+    'box' is the list of action figure height in a given box.
+    Return True if the height in box are in non-decricen order,
+    False otherwise.
+    '''
+    for i in range(len(box) - 1):
+        if box[i] < box[i + 1]:
+            return True
+        else:
+            return False
+
+
+def all_boxes_OK(boxes):
+    '''
+    'boxes' is a list of boxes, each box is the action figure's height.
+    Return True if each box in boxes has its action figures in non-decricen order height.
+    False otherwise.
+    '''
+    for box in boxes:
+        if not box_ok(box):
+            return False
+        else:
+            return True
+
+
+def boxes_endpoints(boxes):
+    '''
+    'boxes' is a list of boxes each box is a list of figure's height.
+    Return a list where each value is a list of two values:
+    The height of the leftmost and the rightmost action figure in a box.
+    '''
+    endpoints = []
+    for box in boxes:
+        endpoints.append([box[0], box[-1]])
+    return endpoints
+
+
+def all_endpoint_ok(endpoints):
+    '''
+    'endpoints' is a list where each list is a value of two values,
+     the height is the leftmost and rightmost action figures in a box.
+     Requires: 'endpoints' is sorted by action figure height.
+     Return 'True' if the 'endpoints' came from boxes that can be put in order.
+     False otherwise.
+    '''
+    maximum = endpoints[0][1]
+    for i in range(1, len(endpoints)):
+        if endpoints[i][0] < maximum:
+            return False
+        else:
+            return True
+
+
+# endpoints.sort()
+
+# ---Main Program---
+n = int(input('What is the box count?'))
+boxes = read_boxes(n)
+# Checks whether all boxes are OK
+if not all_boxes_OK(boxes):
+    print('No')
+else:
+    '''Obtain all lists of boxes with only left and right height.'''
+    endpoints = boxes_endpoints(boxes)
+
+    # Sort boxes
+    endpoints.sort()
+
+    # Determine whether the boxes oraganizible or not
+    if all_boxes_OK(endpoints):
+        print("Yes")
+    else:
+        print('No')
