@@ -259,10 +259,6 @@ determine whether the boxes can be organized'''
 
 # a, b = [1,2,3],[3,2,1]
 # print('a>b') if a>b else print('foo')
-# TODO: Check whether all boxes are OK
-# TODO: Obtain a new list of boxes with only left and right heights
-# TODO: Sort boxes
-# TODO: Determine whether boxes are organized
 
 # bigBox = []
 # boxes = int(input('Сколько коробок с фигурами в большой коробке?'))
@@ -284,92 +280,115 @@ determine whether the boxes can be organized'''
 #     if bigBox[i][-1] > bigBox[i+1][0]:
 #         print('No')
 
+# def read_boxes(n):
+#     '''n is the number of boxes to read.
+#     Read the boxes from the input and return them as a list of boxes;
+#     each boxes is the list of action figure height.'''
+#     boxes = []
+#     for i in range(n):  # Change the n number
+#         box = input("What's the height of each figure? (Divide with space)").split()
+#         box.pop(0)
+#     for i in range(len(box)):
+#         box[i] = int(box[i])
+#         boxes.append(box)
+#     return boxes
+#
+#
+# def box_ok(box):
+#     '''
+#     'box' is the list of action figure height in a given box.
+#     Return True if the height in box are in non-decricen order,
+#     False otherwise.
+#     '''
+#     for i in range(len(box) - 1):
+#         if box[i] < box[i + 1]:
+#             return True
+#         else:
+#             return False
+#
+#
+# def all_boxes_OK(boxes):
+#     '''
+#     'boxes' is a list of boxes, each box is the action figure's height.
+#     Return True if each box in boxes has its action figures in non-decricen order height.
+#     False otherwise.
+#     '''
+#     for box in boxes:
+#         if not box_ok(box):
+#             return False
+#         else:
+#             return True
+#
+#
+# def boxes_endpoints(boxes):
+#     '''
+#     'boxes' is a list of boxes each box is a list of figure's height.
+#     Return a list where each value is a list of two values:
+#     The height of the leftmost and the rightmost action figure in a box.
+#     '''
+#     endpoints = []
+#     for box in boxes:
+#         endpoints.append([box[0], box[-1]])
+#     return endpoints
+#
+#
+# def all_endpoint_ok(endpoints):
+#     '''
+#     'endpoints' is a list where each list is a value of two values,
+#      the height is the leftmost and rightmost action figures in a box.
+#      Requires: 'endpoints' is sorted by action figure height.
+#      Return 'True' if the 'endpoints' came from boxes that can be put in order.
+#      False otherwise.
+#     '''
+#     maximum = endpoints[0][1]
+#     for i in range(1, len(endpoints)):
+#         if endpoints[i][0] < maximum:
+#             return False
+#         else:
+#             return True
+#
+#
+# # endpoints.sort()
+#
+# # ---Main Program---
+# n = int(input('What is the box count?'))
+# boxes = read_boxes(n)
+# # Checks whether all boxes are OK
+# if not all_boxes_OK(boxes):
+#     print('No')
+# else:
+#     '''Obtain all lists of boxes with only left and right height.'''
+#     endpoints = boxes_endpoints(boxes)
+#
+#     # Sort boxes
+#     endpoints.sort()
+#
+#     # Determine whether the boxes oraganizible or not
+#     if all_boxes_OK(endpoints):
+#         print("Yes")
+#     else:
+#         print('No')
 
-def read_boxes(n):
-    '''n is the number of boxes to read.
-    Read the boxes from the input and return them as a list of boxes;
-    each boxes is the list of action figure height.'''
-    boxes = []
-    for i in range(n):  # Change the n number
-        box = input("What's the height of each figure? (Divide with space)").split()
-        box.pop(0)
-    for i in range(len(box)):
-        box[i] = int(box[i])
-        boxes.append(box)
-    return boxes
-
-
-def box_ok(box):
-    '''
-    'box' is the list of action figure height in a given box.
-    Return True if the height in box are in non-decricen order,
-    False otherwise.
-    '''
-    for i in range(len(box) - 1):
-        if box[i] < box[i + 1]:
-            return True
-        else:
-            return False
-
-
-def all_boxes_OK(boxes):
-    '''
-    'boxes' is a list of boxes, each box is the action figure's height.
-    Return True if each box in boxes has its action figures in non-decricen order height.
-    False otherwise.
-    '''
-    for box in boxes:
-        if not box_ok(box):
-            return False
-        else:
-            return True
-
-
-def boxes_endpoints(boxes):
-    '''
-    'boxes' is a list of boxes each box is a list of figure's height.
-    Return a list where each value is a list of two values:
-    The height of the leftmost and the rightmost action figure in a box.
-    '''
-    endpoints = []
-    for box in boxes:
-        endpoints.append([box[0], box[-1]])
-    return endpoints
-
-
-def all_endpoint_ok(endpoints):
-    '''
-    'endpoints' is a list where each list is a value of two values,
-     the height is the leftmost and rightmost action figures in a box.
-     Requires: 'endpoints' is sorted by action figure height.
-     Return 'True' if the 'endpoints' came from boxes that can be put in order.
-     False otherwise.
-    '''
-    maximum = endpoints[0][1]
-    for i in range(1, len(endpoints)):
-        if endpoints[i][0] < maximum:
-            return False
-        else:
-            return True
-
-
-# endpoints.sort()
-
-# ---Main Program---
-n = int(input('What is the box count?'))
-boxes = read_boxes(n)
-# Checks whether all boxes are OK
-if not all_boxes_OK(boxes):
-    print('No')
-else:
-    '''Obtain all lists of boxes with only left and right height.'''
-    endpoints = boxes_endpoints(boxes)
-
-    # Sort boxes
-    endpoints.sort()
-
-    # Determine whether the boxes oraganizible or not
-    if all_boxes_OK(endpoints):
-        print("Yes")
-    else:
-        print('No')
+# ------------------  R E A D I N G A N D W R I T I N G F I L E S  ----------------------
+'''
+Bessie the cow is writing an essay. Each word in the essay contains only lowercase
+or uppercase characters. Her teacher has specified the maximum
+number of characters, not counting spaces, that can occur per line. To satisfy
+this requirement, Bessie writes down the words of the essay using the
+following rules:
+• If the next word fits on the current line, add it to the current line.
+Include a space between each pair of words on the line.
+• Otherwise, put this word on a new line; this line becomes
+Input
+Read input from the file named word.in.
+The input consists of two lines.
+• The first line contains two integers separated by a space. The first
+integer is n, the number of words in the essay; it’s between 1 and
+100. The second integer is k, the maximum number of characters
+(not counting spaces) that can occur per line; it’s between 1 and 80.
+• The second line contains n words, with a space between each pair of
+words. Each word has at most k characters.
+Output
+Write output to the file named word.out.
+Output the properly formatted essay.
+'''
