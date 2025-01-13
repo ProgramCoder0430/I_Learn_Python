@@ -24,6 +24,7 @@ the brunch. n is between 4 and 2,000.
 Output
 For each test case: if the students need to raise more money for the school
 trip, output YES; otherwise, output NO.'''
+
 # schoolTripPrice = float(input('The cost in dollars of the school trip (Between 50$ - 50000$)'))
 # proportions = input('Input four number separated with whitespace and indicating the proportion of the students are in first, second, third and fourth year.')
 # studentsCount = int(input('How many students are the members of the school trip?'))
@@ -223,7 +224,6 @@ determine whether the boxes can be organized'''
     :return: 
     '''
 
-
 #     print(a + b)
 #     # return a + b
 # denis(input(), input())
@@ -392,3 +392,89 @@ Output
 Write output to the file named word.out.
 Output the properly formatted essay.
 '''
+# input_file = open('word.in', 'r')
+# output_file = open('word.out', 'w')
+# lst = input_file.readline().split()
+# n = int(lst[0])
+# k = int(lst[1])
+# words = lst
+# line = ''
+# chars_on_line = 0
+# for word in words:
+#     if chars_on_line + len(word) <= k:
+#         line = line + word + ' '
+#         chars_on_line = chars_on_line + len(word)
+#     else:
+#         output_file.write(line[:-1] + '\n')
+#         line = word + ' '
+#         chars_on_line = len(word)
+#
+# output_file.write(line[:-1] + '\n')
+# input_file.close()
+# output_file.close()
+
+# --------------------------------------------------------------------------------------------
+'''Farmer John has n pastures, all of which he would like to seed with grass.
+The pastures are numbered 1, 2, . . ., n.
+Farmer John has four different types of grass seed, numbered 1, 2, 3,
+and 4. He’ll choose one of these grass types for each pasture.
+Farmer John also has m cows. Each cow has two favorite pastures in
+which it eats grass. Each cow cares only about its two favorite pastures, no
+others. For a healthy diet, each cow requires that its two pastures have different
+types of grass.
+For example, for some given cow, it would be okay if one
+of its pastures had grass type 1 and the other had grass type 4. But it would
+not be okay if both of its pastures had grass type 1.
+A pasture might be the favorite of more than one cow. But it’s guaranteed
+that a pasture is the favorite of no more than three cows.
+Determine the grass type to use in each pasture. Each pasture is required
+to use a grass type between 1 and 4, and each cow’s two favorite pastures
+must have different grass type
+Input
+Read input from the file named revegetate.in.
+The input consists of the following lines:
+• A line containing two integers separated by a space. The first integer
+is n, the number of pastures; it’s between 2 and 100. The second
+integer is m, the number of cows; it’s between 1 and 150.
+• m lines, each of which gives the two favorite pasture numbers for a
+cow. These pasture numbers are integers between 1 and n and are
+separated by a space.
+Output
+Write output to the file named revegetate.out.
+Output a valid way to seed the pastures. The output is a line of n characters,
+each of which is a '1', '2', '3', or '4'. The first character is the grass
+type for pasture 1, the second is the grass type for pasture 2, and so on.
+We can interpret these n characters as an integer with n digits. For example,
+if we have the five grass types '11123', then we can interpret this as
+the integer 11123.
+This integer interpretation comes into play when'''
+input_file = open('revegetate.in', 'r')
+output_file = open('revegetate.out', 'w')
+lst = input_file.readline().split()
+num_pastures = int(lst[0])
+num_cows = int(lst[1])
+favorites = read_cows(input_file, num_cows)
+# TODO identify cows that care about pasture
+# TODO eliminate grass types for pasture
+# TODO choose smallest numbered grass type for pasture
+# TODO write output
+input_file.close()
+output_file.close()
+
+
+def read_cows(input_file, num_cows):
+    '''
+    input_file is a file open for reading; cow information is next to read.
+    num_cows is the number of cows in the file.
+    Read the cows' favorite pastures from input_file.
+    Return a list of each cow's two favorite pastures;
+    each value in the list is a list of two values giving the
+    favorite
+    '''
+    favorites = []
+    for i in range(num_cows):
+        lst = input_file.readline().split()
+        lst[0] = int(lst[0])
+        lst[1] = int(lst[1])
+        favorites.append(lst)
+    return favorites
